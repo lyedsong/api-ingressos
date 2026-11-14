@@ -17,5 +17,8 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
     String username,
     Pedido.StatusPedido status
 );
+List<Pedido> findByStatusOrderByEntradaFilaAscIdAsc(
+    Pedido.StatusPedido status
+);
 
 }

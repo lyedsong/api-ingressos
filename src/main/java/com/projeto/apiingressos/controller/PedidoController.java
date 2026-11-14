@@ -56,6 +56,23 @@ public class PedidoController {
                         "status", pedido.getStatus().name()
                 ));
     }
+    @PostMapping("/{id}/fila")
+public ResponseEntity<Map<String, Object>> entrarNaFila(
+        @PathVariable Long id,
+        Authentication autenticacao) {
+
+    Pedido pedido = pedidoService.entrarNaFila(
+            id,
+            autenticacao.getName()
+    );
+
+    return ResponseEntity.ok(
+            Map.of(
+                    "id", pedido.getId(),
+                    "status", pedido.getStatus().name()
+            )
+    );
+}
 
     @PostMapping("/{id}/cancelar")
     public ResponseEntity<Map<String, Object>> cancelarPedido(

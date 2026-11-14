@@ -19,7 +19,9 @@ public class GlobalExceptionHandler {
 
         if ("POOL_CHEIO".equals(mensagem)
         || "COTA_PESSOAL".equals(mensagem)
-        || "PEDIDO_NAO_RESERVAVEL".equals(mensagem)) {
+        || "PEDIDO_NAO_RESERVAVEL".equals(mensagem)
+        || "FILA_NAO_DISPONIVEL".equals(mensagem)
+        || "PEDIDO_NAO_ENFILEIRAVEL".equals(mensagem)) {
             
             return ResponseEntity
                     .status(HttpStatus.CONFLICT)

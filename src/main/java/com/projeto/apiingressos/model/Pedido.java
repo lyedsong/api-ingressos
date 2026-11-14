@@ -2,6 +2,7 @@
 package com.projeto.apiingressos.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "pedidos")
@@ -17,6 +18,9 @@ public class Pedido {
 
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
+
+    @Column(name = "entrada_fila")
+    private LocalDateTime entradaFila;
 
     public Pedido() {
     }
@@ -49,9 +53,18 @@ public class Pedido {
         this.status = status;
     }
 
+    public LocalDateTime getEntradaFila() {
+        return entradaFila;
+    }
+
+    public void setEntradaFila(LocalDateTime entradaFila) {
+        this.entradaFila = entradaFila;
+    }
+
     public enum StatusPedido {
         NO_CARRINHO,
         RESERVADO,
-        CANCELADO
+        CANCELADO,
+        AGUARDANDO_FILA
     }
 }
